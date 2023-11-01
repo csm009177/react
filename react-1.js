@@ -38,7 +38,7 @@ function component(elementNode, attributes, children) {
       }
     });
   }
-  elementStr = `</${elementNode}>`; // 맨 위 변수에 덧붙여서 반환한다.
+  elementStr += `</${elementNode}>`; // 맨 위 변수에 덧붙여서 반환한다.
   return elementStr; // 함수가 호출되는 순간 문자열이 반환된다
 }
 // 문자열로 잘 작동하느닞 테스트 한 아래 코드
