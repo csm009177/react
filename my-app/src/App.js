@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
 
 function App() {
+  // 상태 설정 예시
+  const [count, setCount] = useState(0);
+
+  // 이벤트 처리 함수
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello, React!</h1>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increase Count</button>
     </div>
   );
+}
+
+function App2(){
+  // const 
 }
 
 export default App;
