@@ -6,16 +6,12 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="root">
-    
-    <div id="board"></div>
-  </div>
-  
+	<div id="root"></div>
   <script>
-    function component2(elementNode, attributes, children) {
+    function component(elementNode, attributes, children) {
       let elementStr = `<${elementNode}`;
       for (let key in attributes) {
-        elementStr += `${key} = "${attributes[key]}"`;
+        elementStr += ` ${key} = "${attributes[key]}"`;
       }
       elementStr += '>';
       if (children) {
@@ -32,7 +28,7 @@
     }
 
     window.addEventListener('hashchange', () => {
-      const contentDiv = document.getElementById('board');
+      const contentDiv = document.getElementById('root');
       // window.location 객체는 현재 url에 대한 정보를 제공한다
       // hash 속성은 url의 해시 부분을 반환한다
       // 예를 들어, http://example.com#page1 이라는 url이 있다면, hash 속성은 #page1을 반환한다
@@ -48,18 +44,18 @@
 
       switch (hash) {
         case 'page1' : 
-          contentDiv.innerHTML = component('h1 ', { style: 'color:blue;'}, ["this is Page 1"])
+          contentDiv.innerHTML = component('h1', { style: 'color:blue;'}, ["this is Page 1"])
           break;
         case 'page2' :
-          contentDiv.innerHTML = component('div ', {style:'background-color:cadetblue;'}, [component('h1', {}, ['this is page2'])]);
+          contentDiv.innerHTML = component('div', {style:'background-color:cadetblue;'}, [component('h1', {}, ['this is page2'])]);
           break;
         case 'page3' :
-          contentDiv.innerHTML = component('div ', { style: 'display:flex; justifly-content:center; color:#ff2222;'}, [component('h1', {}, ['this is page3'])])
+          contentDiv.innerHTML = component('div', { style: 'display:flex; justifly-content:center; color:#ff2222;'}, [component('h1', {}, ['this is page3'])])
         case 'page4' :
-          contentDiv.innerHTML = component('div ', { style: 'display:flex; justifly-content:center; color:#333;'}, [component('h1', {}, ['this is page4'])])
+          contentDiv.innerHTML = component('div', { style: 'display:flex; justifly-content:center; color:#333;'}, [component('h1', {}, ['this is page4'])])
           break;
         default : // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 최초 접속에는 hash가 없기 때문에 default가 실행된다
-        contentDiv.innerHTML = component('h1 ', {style:'color:blue;'}, ["반갑습니다. 접속 할때 보이는 페이지(처럼보이는) element입니다"]);
+        contentDiv.innerHTML = component('h1', {}, ["반갑습니다. 접속 할때 보이는 페이지(처럼보이는) element입니다"]);
         // 아래의 dispatchEvent()를 사용하지 않으면, 해당 코드가 실행되지 않는다
       }
     });
