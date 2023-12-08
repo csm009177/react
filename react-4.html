@@ -7,31 +7,48 @@
 </head>
 <body>
   <div id="root">
+    <div id="board"></div>
     <p id="display-text">상태가 비활성화되어 있습니다</p>
     <button id="toggle-button">상태변경</button>
   </div>
-  <script>
+  <script type="module">
+    import {createElement, render}  from './compo.js'
     let stateData = {
-      isActive : false
+      isActive : false,
+      rootcolor: true
     };
-    
     const button = document.getElementById("toggle-button");
     const displayText = document.getElementById("display-text");
+    const root = document.getElementById('root')
+    const board = document.getElementById('board')
+    board.style.width = "100vw"
+    board.style.height = "100vh"
+
     button.addEventListener('click', function() {
       if(stateData.isActive) {
         stateData.isActive = false;
+        stateData.rootcolor = false;
       } else {
         stateData.isActive = true;
+        stateData.rootcolor = true;
       }
       updateUI();
+
     });
     function updateUI() {
       if (stateData.isActive) {
         displayText.textContent = "상태가 활성화되어 있습니다";
         displayText.style.color = "green"
+        root.style.backgroundColor = "gray"
+        const testcont1 = createElement("div", {style:"width:50vw; height:50vh; background-color:green;"})
+        board.appendChild(render(testcont1))
       } else {
         displayText.textContent = "상태가 비활성화되어 있습니다";
         displayText.style.color = "red"
+        root.style.backgroundColor = "black"
+        const testcont2 = createElement("div", {style:"width:50vw; height:50vh; background-color:blue;"})
+        board.appendChild(render(testcont2))
+        board.innerHTML = ""
       }
     }
     updateUI() // 초기 UI 설정
