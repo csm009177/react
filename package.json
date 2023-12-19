@@ -1,17 +1,14 @@
 {
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
-  },
   "name": "react",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
 }
