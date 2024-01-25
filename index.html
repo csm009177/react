@@ -6,23 +6,39 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="pokemon-list"></div>
+  <div id="root"></div>
   <script>
-    const pokemon = [ "피카츄", "라이츄", "파이리", "꼬부기"];
-
-    const updatedPokemon = pokemon.map((pokemonName)=> {
-      if (pokemonName === "파이리"){
-        return "버터풀";
+    function component(elementNode, attributes, children){
+      let elementStr = `<${elementNode}`;
+      for (let key in attributes) {
+        elementStr += ` ${key} = "${attributes[key]}"`;
       }
-      return pokemonName;
-    });
-
-    const pokemonListContainer = document.getElementById('pokemon-list');
-    updatedPokemon.forEach((pokemon)=> {
-      const pokemonElement = document.createElement('div');
-      pokemonElement.innerHTML = `<p>${pokemonName}</p>`;
-      pokemonListContainer.appendChild(pokemonElement);
-    });
+      elementStr += '>';
+      if(children){
+        children.forEach((child)=> {
+          if(typeof child === "string"){
+            elementStr += child;
+          } else {
+            elementStr += component(child.elementNode, child.attributes, child.children);
+          }
+        })
+      }
+      elementStr += `</${elementNode}>`;
+      return elementStr
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const contentDiv = document.getElementById('root');
+      const hash = window.location.hash.substr(1);
+      switch (hash) {
+        case 'page1' : 
+          contentDiv.innerHTML = component('h1', { style: 'color:blue;'}, ["this is Page 1"])
+          break;
+          default : // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 최초 접속에는 hash가 없기 때문에 default가 실행된다
+        contentDiv.innerHTML = component('h1', {}, ["반갑습니다. 접속 할때 보이는 페이지(처럼보이는) element입니다"]);
+      }
+    })
+        // 초기 로딩을 위한 코드
+        window.dispatchEvent(new Event('hashchange'));
   </script>
 </body>
 </html>
