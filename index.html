@@ -9,7 +9,7 @@
 
 <body>
   <div id="root">
-    <h1 id="head">origin</h1>
+    <h1 id="head">first</h1>
     <button id="bnt">button</button>
   </div>
   <script>
@@ -34,7 +34,11 @@
     // 이벤트 리스터 추가
     bnt.addEventListener("click", function () {
       // button을 클릭하면 stateData에 마련된 함수가 '연결되어' 동작하여 결국에는 h1 데이터는 새로운 값으로 전환된다
-      updateHead(stateData.first ? stateData.second:stateData.first)
+      if(head.innerText ===stateData.first){
+        updateHead(stateData.second)
+      } else {
+        updateHead(stateData.first)
+      }
     })
   </script>
 </body>
