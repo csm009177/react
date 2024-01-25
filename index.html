@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <div id="pokemon-list"></div>
+  <div id="root">
+    <h1 id="head">origin</h1>
+    <button id="bnt">button</button>
+  </div>
   <script>
-    const pokemon = [ "피카츄", "라이츄", "파이리", "꼬부기"];
+    let stateData = {
+      first: "first",
+      second: "second",
+    }
 
-    const updatedPokemon = pokemon.map((pokemonName)=> {
-      if (pokemonName === "파이리"){
-        return "버터풀";
-      }
-      return pokemonName;
-    });
+    const head = document.getElementById('head')
+    const bnt = document.getElementById('bnt')
 
-    const pokemonListContainer = document.getElementById('pokemon-list');
-    updatedPokemon.forEach((pokemon)=> {
-      const pokemonElement = document.createElement('div');
-      pokemonElement.innerHTML = `<p>${pokemonName}</p>`;
-      pokemonListContainer.appendChild(pokemonElement);
-    });
+    // 업데이트 기능 선언
+    function update(target) {
+      target.textContent = stateData.before
+    }
+
+    function updateHead(changeHead) {
+      stateData.before = changeHead
+      update(head)
+    }
+
+    // 이벤트 리스터 추가
+    bnt.addEventListener("click", function () {
+      // button을 클릭하면 stateData에 마련된 함수가 '연결되어' 동작하여 결국에는 h1 데이터는 새로운 값으로 전환된다
+      updateHead(stateData.first ? stateData.second:stateData.first)
+    })
   </script>
 </body>
+
 </html>
