@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import PokemonList from './pokemonList';
+import PokemonList from './p7';
 
 function App() {
   return (
