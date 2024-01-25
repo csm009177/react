@@ -1,47 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
 <body>
-<<<<<<< HEAD
-  <div id="root">
-    <h1 id="head">first</h1>
-    <button id="bnt">button</button>
-  </div>
-  <script>
-    let stateData = {
-      first: "first",
-      second: "second",
-    }
-
-    const head = document.getElementById('head')
-    const bnt = document.getElementById('bnt')
-
-    // 업데이트 기능 선언
-    function update(target) {
-      target.textContent = stateData.before
-    }
-
-    function updateHead(changeHead) {
-      stateData.before = changeHead
-      update(head)
-    }
-
-    // 이벤트 리스터 추가
-    bnt.addEventListener("click", function () {
-      // button을 클릭하면 stateData에 마련된 함수가 '연결되어' 동작하여 결국에는 h1 데이터는 새로운 값으로 전환된다
-      if(head.innerText ===stateData.first){
-        updateHead(stateData.second)
-      } else {
-        updateHead(stateData.first)
-      }
-    })
-=======
   <div id="root"></div>
   <script>
     function component(elementNode, attributes, children){
@@ -75,8 +39,6 @@
     })
         // 초기 로딩을 위한 코드
         window.dispatchEvent(new Event('hashchange'));
->>>>>>> origin/p2
   </script>
 </body>
-
 </html>
