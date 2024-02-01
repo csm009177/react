@@ -1,6 +1,6 @@
 import './App.css';
-import PokemonList from './p7';
-import PokemonList2 from './p8-1';
+import PokemonList from './prac/p7';
+import PokemonList2 from './prac/p8';
 
 function App() {
   return (
